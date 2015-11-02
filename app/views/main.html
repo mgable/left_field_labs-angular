@@ -1,13 +1,13 @@
  <h3>The origin location</h3>
  <h5>{{origin.formatted_address}}</h3>
- <em>All distances will be relative to this address</em>
+ <em>All distances will be relative to this address. Click on an address to see it mapped.</em>
 
  <table class="table">
   <thead>
     <th>Address</th>
     <th>Miles from Origin</th>
   </thead>
-  <tr ng-repeat="place in places" ng-class={"selected":isSelected(place)}><td><a ng-click="updateMap(place)">{{place.formatted_address}}</a></td><td>{{place.distanceFromOrigin}}</td></tr>
+  <tr ng-repeat="place in places" ng-class={"selected":isSelected(place)} ng-click="updateMap(place)"><td><a>{{place.formatted_address}}</a></td><td>{{place.distanceFromOrigin}}</td></tr>
  </table>
 
 <show-map origin="origin" place="place"></show-map>
