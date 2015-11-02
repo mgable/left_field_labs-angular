@@ -21,4 +21,14 @@ angular.module('leftfieldlabsApp')
 	$scope.isSelected = function(which){
 		return which === $scope.place;
 	}
+
+	$scope.setOrigin = function(which){
+		GetDistance.getOrigin(which).then(function(data){
+			$scope.origin = data;
+			GetDistance.getPlaces(CONFIG.places).then(function(data){
+				$scope.places = data;
+				$scope.place = $scope.places[0];
+			});
+		});
+	}
   });

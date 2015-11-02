@@ -15,8 +15,8 @@ angular.module('leftfieldlabsApp')
     this.getOrigin = getOrigin;
     this.getPlaces = getPlaces;
 
-	function getPlaces(){
-		return getLocations(CONFIG.places).then(function(data){
+	function getPlaces(which){
+		return getLocations(which).then(function(data){
 
 	    	places = data.map(function(v,i,a){
 	    		var obj = a[i].data.results[0];
@@ -28,8 +28,8 @@ angular.module('leftfieldlabsApp')
 		});
 	}
 
-	function getOrigin(){
-		return getLocation(CONFIG.origin).then(function(data){
+	function getOrigin(which){
+		return getLocation(which).then(function(data){
 			origin = data.data.results[0]
 	    	return origin;
 	    });

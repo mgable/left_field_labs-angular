@@ -21,8 +21,8 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         resolve: {
-          "Origin": function(GetDistance){ return GetDistance.getOrigin()},
-          "Places": function(GetDistance){ return GetDistance.getPlaces()}
+          "Origin": function(GetDistance, CONFIG){ return GetDistance.getOrigin(CONFIG.origin)},
+          "Places": function(GetDistance, CONFIG){ return GetDistance.getPlaces(CONFIG.places)}
         }
       })
       .otherwise({

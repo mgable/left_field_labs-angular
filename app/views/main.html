@@ -1,5 +1,5 @@
  <h3>The origin location</h3>
- <h5>{{origin.formatted_address}}</h3>
+ <h5><input class="origin" type="text" ng-model="origin.formatted_address" />&nbsp;<button class="btn btn-default btn-sm" ng-click="setOrigin(origin.formatted_address)">Set Origin</button></h3>
  <em>All distances will be relative to this address. Click on an address to see it mapped.</em>
 
  <table class="table">
