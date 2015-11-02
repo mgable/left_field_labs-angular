@@ -1,31 +1,13 @@
-<!-- <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div> -->
+ <h3>The origin location</h3>
+ <h5>{{origin.formatted_address}}</h3>
+ <em>All distances will be relative to this address</em>
 
-<!-- <div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+ <table class="table">
+  <thead>
+    <th>Address</th>
+    <th>Miles from Origin</th>
+  </thead>
+  <tr ng-repeat="place in places" ng-class={"selected":isSelected(place)}><td><a ng-click="updateMap(place)">{{place.formatted_address}}</a></td><td>{{place.distanceFromOrigin}}</td></tr>
+ </table>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
- -->
- <h3>{{origin.formatted_address}}</h3>
-
- <ul>
-  <li ng-repeat="place in places">{{place.formatted_address}}&nbsp;distance from origin is {{place.distanceFromOrigin}}</li>
- </ul>
-
-<center><div id="map_canvas" style="width:700px; height:540px"></div></center>
+<show-map origin="origin" place="place"></show-map>

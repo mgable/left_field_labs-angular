@@ -9,12 +9,31 @@
  */
 angular.module('leftfieldlabsApp')
   .service('GetDistance', function ($http, CONFIG, $q) {
+  	var origin,
+  		places;
 
-    this.getLocation = getLocation;
-    this.getLocations = getLocations;
-    this.getDistance = getDistance;
-    this.sort = sort;
+    this.getOrigin = getOrigin;
+    this.getPlaces = getPlaces;
 
+	function getPlaces(){
+		return getLocations(CONFIG.places).then(function(data){
+
+	    	places = data.map(function(v,i,a){
+	    		var obj = a[i].data.results[0];
+	    		obj.distanceFromOrigin= getDistance(origin, obj);
+	    		return obj;
+	    	});
+
+	    	return places.sort(sort);
+		});
+	}
+
+	function getOrigin(){
+		return getLocation(CONFIG.origin).then(function(data){
+			origin = data.data.results[0]
+	    	return origin;
+	    });
+	}
     
     function getLocations(addresses){
     	return $q.all(addresses.map(getLocation));

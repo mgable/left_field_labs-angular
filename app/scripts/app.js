@@ -19,11 +19,11 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+        controller: 'MainCtrl',
+        resolve: {
+          "Origin": function(GetDistance){ return GetDistance.getOrigin()},
+          "Places": function(GetDistance){ return GetDistance.getPlaces()}
+        }
       })
       .otherwise({
         redirectTo: '/'
